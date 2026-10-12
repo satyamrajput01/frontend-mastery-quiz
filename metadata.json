@@ -1,0 +1,6 @@
+{
+  "name": "Frontend Mastery Quiz",
+  "description": "An interactive, accessible frontend development quiz application built with semantic HTML5, modern CSS3, and Vanilla JavaScript (ES6+).",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

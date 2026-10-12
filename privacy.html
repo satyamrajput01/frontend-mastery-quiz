@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0369a1" />
+    <title>Privacy Policy | FrontendMastery</title>
+    <meta
+      name="description"
+      content="Privacy Policy describing how FrontendMastery processes quiz responses and exported JSON results locally in the browser."
+    />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body id="top">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header class="site-header">
+      <div class="header-inner">
+        <a href="index.html" class="brand-wordmark">FrontendMastery</a>
+
+        <nav class="site-nav" aria-label="Primary navigation">
+          <a href="index.html" class="nav-link">Quiz Home</a>
+          <a href="privacy.html" class="nav-link active" aria-current="page">Privacy Policy</a>
+          <a href="terms.html" class="nav-link">Terms and Conditions</a>
+        </nav>
+
+        <div class="header-actions">
+          <a href="index.html" class="btn btn-primary btn-sm">Open Quiz</a>
+        </div>
+      </div>
+    </header>
+
+    <main id="main-content" class="main-container">
+      <article class="panel document-panel">
+        <header class="document-header">
+          <p class="metadata-line">
+            <span>Documentation</span>
+            <span aria-hidden="true">/</span>
+            <span>Data Practices</span>
+          </p>
+          <h1 class="display-title">Privacy Policy</h1>
+          <p class="lead-copy">
+            This policy explains how the FrontendMastery application handles quiz activity,
+            browser state, and exported results based on the actual client-side source code.
+          </p>
+        </header>
+
+        <section class="document-section">
+          <h2 class="section-heading">1. Local Browser Processing</h2>
+          <p class="body-copy">
+            FrontendMastery is a client-side web application built with HTML5, CSS3, and Vanilla
+            JavaScript. When you start the quiz, select answers, view explanations, or track
+            elapsed time, all state is held temporarily in your browser memory (JavaScript
+            variables) for the duration of your active page session.
+          </p>
+          <p class="body-copy">
+            Your selected answers, score, accuracy percentage, and elapsed time are calculated
+            exclusively inside your browser and are not transmitted by the application to any
+            application database or remote API endpoint.
+          </p>
+        </section>
+
+        <section class="document-section">
+          <h2 class="section-heading">2. Question Bank Loading</h2>
+          <p class="body-copy">
+            When the page loads, the application makes a standard HTTP <code>fetch()</code>
+            request to retrieve the static file <code>data/questions.json</code> from the same
+            web server hosting the site. No user-entered information is sent with this request.
+          </p>
+        </section>
+
+        <section class="document-section">
+          <h2 class="section-heading">3. Downloaded JSON Results</h2>
+          <p class="body-copy">
+            When you click the <strong>Download Results (JSON)</strong> button on the completion
+            screen, the application constructs a JSON document locally in your browser using the
+            <code>Blob</code> and <code>URL.createObjectURL</code> web APIs. That file is saved
+            directly to your device through your browser download manager. Once you download the
+            file, its storage and sharing are controlled entirely on your own device.
+          </p>
+        </section>
+
+        <section class="document-section">
+          <h2 class="section-heading">4. Browser Storage, Cookies, and Third-Party Scripts</h2>
+          <p class="body-copy">
+            The FrontendMastery application code does not read or write browser cookies, does not
+            store data in <code>localStorage</code>, <code>sessionStorage</code>, or
+            <code>IndexedDB</code>, and does not load external analytics, advertising, or font
+            tracking scripts. Reloading or closing the browser tab clears your current quiz
+            progress from memory.
+          </p>
+        </section>
+
+        <section class="document-section">
+          <h2 class="section-heading">5. Hosting Infrastructure Logs</h2>
+          <p class="body-copy">
+            While the FrontendMastery application code itself does not collect personal data, the
+            static web server or hosting platform serving these files (such as GitHub Pages or
+            your cloud hosting provider) processes standard HTTP requests to deliver the HTML,
+            CSS, JavaScript, SVG, and JSON assets to your browser. Hosting providers typically
+            record standard network request metadata (such as IP address, requested URL path,
+            timestamp, and user-agent header) for security and operational reliability under their
+            own platform privacy policies.
+          </p>
+        </section>
+
+        <div class="document-footer-actions">
+          <a href="index.html" class="btn btn-primary">Return to Quiz</a>
+          <a href="terms.html" class="btn btn-secondary">Read Terms and Conditions</a>
+        </div>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <p class="footer-copy">
+          FrontendMastery: Interactive HTML5, CSS3, JavaScript ES6+, DOM, and Accessibility Quiz.
+        </p>
+        <nav class="footer-nav" aria-label="Footer and legal navigation">
+          <a href="index.html" class="footer-link">Quiz Home</a>
+          <a href="privacy.html" class="footer-link" aria-current="page">Privacy Policy</a>
+          <a href="terms.html" class="footer-link">Terms and Conditions</a>
+        </nav>
+      </div>
+    </footer>
+  </body>
+</html>

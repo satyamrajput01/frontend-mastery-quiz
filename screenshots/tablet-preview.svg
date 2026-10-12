@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 768 600" width="768" height="600">
+  <rect width="768" height="600" fill="#f8fafc" />
+  <rect width="768" height="56" fill="#ffffff" stroke="#cbd5e1" />
+  <text x="32" y="34" font-family="sans-serif" font-size="18" font-weight="700" fill="#0f172a">FrontendMastery (Tablet 768px)</text>
+  <rect x="32" y="88" width="704" height="460" rx="6" fill="#ffffff" stroke="#cbd5e1" />
+  <text x="64" y="135" font-family="sans-serif" font-size="14" font-weight="700" fill="#0f172a">Question 4 of 15 / CSS3 / Time: 00:45 / Score: 3 / 15</text>
+  <rect x="64" y="155" width="640" height="8" rx="2" fill="#f1f5f9" stroke="#cbd5e1" />
+  <rect x="64" y="155" width="170" height="8" fill="#0369a1" />
+  <text x="64" y="205" font-family="sans-serif" font-size="18" font-weight="600" fill="#0f172a">Tablet Responsive View: Rectangular Touch Controls</text>
+  <rect x="64" y="235" width="640" height="56" rx="4" fill="#f0fdf4" stroke="#15803d" />
+  <text x="88" y="268" font-family="sans-serif" font-size="15" font-weight="600" fill="#14532d">A. minmax(0, 1fr) [Correct]</text>
+  <rect x="64" y="305" width="640" height="56" rx="4" fill="#fef2f2" stroke="#b91c1c" />
+  <text x="88" y="338" font-family="sans-serif" font-size="15" font-weight="600" fill="#7f1d1d">B. overflow: hidden [Your Answer]</text>
+</svg>

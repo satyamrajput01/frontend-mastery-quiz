@@ -1,0 +1,433 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0369a1" />
+    <title>FrontendMastery: Frontend Engineering Quiz</title>
+    <meta
+      name="description"
+      content="FrontendMastery is a 15-question interactive quiz covering HTML5, CSS3, JavaScript ES6+, DOM manipulation, and web accessibility with instant explanations and downloadable JSON results."
+    />
+    <meta property="og:title" content="FrontendMastery: Frontend Engineering Quiz" />
+    <meta
+      property="og:description"
+      content="A 15-question interactive assessment covering HTML5, CSS3, JavaScript ES6+, DOM manipulation, and web accessibility."
+    />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body id="top">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Top Navigation Bar -->
+    <header class="site-header">
+      <div class="header-inner">
+        <a href="index.html" id="brand-link" class="brand-wordmark">FrontendMastery</a>
+
+        <nav class="site-nav" aria-label="Primary navigation">
+          <a href="#overview" id="nav-overview" class="nav-link active">Overview</a>
+          <a href="#subjects" id="nav-subjects" class="nav-link">Subjects</a>
+          <a href="#mechanics" id="nav-mechanics" class="nav-link">How It Works</a>
+          <a href="#export-info" id="nav-export" class="nav-link">JSON Export</a>
+        </nav>
+
+        <div class="header-actions">
+          <button type="button" id="header-start-btn" class="btn btn-primary btn-sm">
+            Start Quiz
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Application Landmark -->
+    <main id="main-content" class="main-container">
+      <!-- Loading State -->
+      <section
+        id="loading-screen"
+        class="panel state-panel hidden"
+        aria-live="polite"
+        aria-busy="true"
+      >
+        <div class="spinner" aria-hidden="true"></div>
+        <h2 class="state-title">Loading Question Bank</h2>
+        <p class="state-description">
+          Fetching 15 frontend engineering questions from <code>data/questions.json</code>.
+        </p>
+      </section>
+
+      <!-- Error State  -->
+      <section
+        id="error-screen"
+        class="panel state-panel error-panel hidden"
+        role="alert"
+        aria-live="assertive"
+      >
+        <div class="error-indicator" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="10" cy="10" r="8" />
+            <line x1="10" y1="6" x2="10" y2="11" />
+            <circle cx="10" cy="14" r="0.5" fill="currentColor" />
+          </svg>
+        </div>
+        <h2 class="state-title">Unable to Load Quiz Questions</h2>
+        <p id="error-message" class="state-description">
+          The question file <code>data/questions.json</code> could not be loaded. Verify that the
+          application is served over HTTP or HTTPS and retry.
+        </p>
+        <div class="state-actions">
+          <button type="button" id="retry-btn" class="btn btn-primary">
+            Retry Loading Questions
+          </button>
+        </div>
+      </section>
+
+      <!-- Landing / Start Screen -->
+      <section id="start-screen" class="landing-view" aria-labelledby="hero-heading">
+        <div class="editorial-grid" id="overview">
+          <!-- Primary Assessment Description -->
+          <div class="panel primary-panel">
+            <p class="metadata-line">
+              <span>Technical Self-Assessment</span>
+              <span aria-hidden="true">/</span>
+              <span id="total-questions-meta">15 Questions</span>
+              <span aria-hidden="true">/</span>
+              <span>5 Core Subjects</span>
+            </p>
+
+            <h1 id="hero-heading" class="display-title">
+              Frontend Engineering and Web Accessibility Quiz
+            </h1>
+
+            <p class="lead-copy">
+              FrontendMastery is a practical self-assessment tool for reviewing core web platform
+              specifications. The quiz loads 15 multiple-choice questions covering HTML5 document
+              semantics, CSS3 Grid and Flexbox layout behavior, JavaScript ES6+ execution order,
+              DOM event handling, and WCAG 2.1 accessibility standards.
+            </p>
+
+            <div class="spec-strip" aria-label="Quiz specifications">
+              <div class="spec-cell">
+                <span class="spec-label">Questions</span>
+                <strong class="spec-value tabular-nums" id="stat-question-count">15</strong>
+              </div>
+              <div class="spec-cell">
+                <span class="spec-label">Options per Question</span>
+                <strong class="spec-value tabular-nums">4</strong>
+              </div>
+              <div class="spec-cell">
+                <span class="spec-label">Subject Areas</span>
+                <strong class="spec-value tabular-nums">5</strong>
+              </div>
+              <div class="spec-cell">
+                <span class="spec-label">Result Export</span>
+                <strong class="spec-value">Local JSON</strong>
+              </div>
+            </div>
+
+            <div id="mechanics" class="mechanics-block">
+              <h2 class="section-heading">How the Quiz Works</h2>
+              <ul class="editorial-list">
+                <li>
+                  <strong>Single-Answer Locking:</strong> Selecting one of the four options
+                  immediately locks the question to prevent multiple attempts.
+                </li>
+                <li>
+                  <strong>Scoring and Explanations:</strong> Each accurate selection adds 1 point
+                  to your live score. Every selection immediately reveals the verified answer and a
+                  short technical explanation.
+                </li>
+                <li>
+                  <strong>Progress and Elapsed Time:</strong> A progress bar tracks completion from
+                  Question 1 through Question 15 while an elapsed-time counter records your session
+                  duration in minutes and seconds.
+                </li>
+                <li>
+                  <strong>Completion and Review:</strong> Finishing Question 15 stops the timer and
+                  displays your total score, accuracy percentage, elapsed time, domain breakdown,
+                  and a complete answer log.
+                </li>
+              </ul>
+            </div>
+
+            <div id="export-info" class="export-info-block">
+              <h2 class="section-heading">Exported Results Format</h2>
+              <p class="body-copy">
+                On the results screen, you can download a JSON file generated directly in your
+                browser. The exported file includes the completion timestamp, elapsed duration,
+                overall score and percentage, per-subject tallies, and each question with your
+                selected option, the correct option, and the explanation.
+              </p>
+            </div>
+
+            <div class="cta-bar">
+              <button type="button" id="start-btn" class="btn btn-primary btn-lg">
+                Start Quiz
+              </button>
+              <span class="cta-caption">
+                Self-paced session. Click an option to check your answer.
+              </span>
+            </div>
+          </div>
+
+          <!-- Secondary Subject Column -->
+          <aside class="panel secondary-panel" aria-label="Subjects covered">
+            <div id="subjects" class="sidebar-block">
+              <h2 class="section-heading">Subjects Covered</h2>
+              <p class="sidebar-note">
+                The 15 questions are divided evenly across five frontend engineering areas:
+              </p>
+              <ol class="subject-table">
+                <li class="subject-row">
+                  <div class="subject-info">
+                    <span class="subject-title">01. Semantic HTML5</span>
+                    <span class="subject-detail">Document landmarks, script loading, form labels</span>
+                  </div>
+                  <span class="subject-count tabular-nums">3 questions</span>
+                </li>
+                <li class="subject-row">
+                  <div class="subject-info">
+                    <span class="subject-title">02. CSS3 Layout and Specificity</span>
+                    <span class="subject-detail">Grid track sizing, Flexbox shorthand, selector weight</span>
+                  </div>
+                  <span class="subject-count tabular-nums">3 questions</span>
+                </li>
+                <li class="subject-row">
+                  <div class="subject-info">
+                    <span class="subject-title">03. JavaScript ES6+ Runtime</span>
+                    <span class="subject-detail">Microtask queue, immutable array methods, lexical scope</span>
+                  </div>
+                  <span class="subject-count tabular-nums">3 questions</span>
+                </li>
+                <li class="subject-row">
+                  <div class="subject-info">
+                    <span class="subject-title">04. DOM Manipulation</span>
+                    <span class="subject-detail">XSS-safe text updates, event delegation, DocumentFragment</span>
+                  </div>
+                  <span class="subject-count tabular-nums">3 questions</span>
+                </li>
+                <li class="subject-row">
+                  <div class="subject-info">
+                    <span class="subject-title">05. Web Accessibility</span>
+                    <span class="subject-detail">WCAG 2.1 contrast ratios, ARIA live regions, focus rings</span>
+                  </div>
+                  <span class="subject-count tabular-nums">3 questions</span>
+                </li>
+              </ol>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- Active Quiz Screen -->
+      <section
+        id="quiz-screen"
+        class="quiz-view hidden"
+        aria-labelledby="question-text"
+      >
+        <article class="panel quiz-panel">
+          <!-- Quiz Header: Progress, Counter, Metadata, Timer, and Live Score -->
+          <header class="quiz-header">
+            <div class="quiz-meta-bar">
+              <div class="quiz-position-group">
+                <span id="question-counter" class="question-counter tabular-nums">
+                  Question 1 of 15
+                </span>
+                <span class="meta-sep" aria-hidden="true">/</span>
+                <span id="question-category" class="question-category">HTML5</span>
+                <span class="meta-sep" aria-hidden="true">/</span>
+                <span id="question-difficulty" class="question-difficulty">Foundational</span>
+              </div>
+
+              <div class="quiz-telemetry-group">
+                <div class="telemetry-item" aria-label="Elapsed quiz time">
+                  <span class="telemetry-label">Time:</span>
+                  <span id="timer-display" class="telemetry-value tabular-nums">00:00</span>
+                </div>
+                <span class="meta-sep" aria-hidden="true">/</span>
+                <div class="telemetry-item" aria-live="polite" aria-atomic="true">
+                  <span class="telemetry-label">Score:</span>
+                  <span id="score-display" class="telemetry-value tabular-nums">0 / 15</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Accessible Rectangular Progress Bar -->
+            <div class="progress-row">
+              <div
+                id="progress-bar"
+                class="progress-track"
+                role="progressbar"
+                aria-label="Quiz completion progress"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                aria-valuenow="7"
+              >
+                <div id="progress-fill" class="progress-fill"></div>
+              </div>
+              <span id="progress-percentage" class="progress-readout tabular-nums">7%</span>
+            </div>
+          </header>
+
+          <!-- Question Prompt & Four Touch-Friendly Answer Options -->
+          <div class="question-stage">
+            <h2 id="question-text" class="question-heading" tabindex="-1">
+              Loading question...
+            </h2>
+
+            <div
+              id="options-container"
+              class="options-list"
+              role="group"
+              aria-labelledby="question-text"
+            >
+              <!-- Populated dynamically via js/script.js -->
+            </div>
+          </div>
+
+          <!-- Immediate Answer Feedback & Explanation Panel -->
+          <section
+            id="feedback-container"
+            class="feedback-box hidden"
+            aria-live="polite"
+            aria-atomic="true"
+          >
+            <div class="feedback-top">
+              <span id="feedback-badge" class="feedback-status"></span>
+              <p id="feedback-correct-answer" class="feedback-answer-line"></p>
+            </div>
+            <p id="feedback-explanation" class="feedback-explanation"></p>
+          </section>
+
+          <!-- Quiz Footer Controls -->
+          <footer class="quiz-footer">
+            <p id="quiz-helper-text" class="quiz-helper-text">
+              Choose one option above to check your answer.
+            </p>
+            <button type="button" id="next-btn" class="btn btn-primary" disabled>
+              Next Question
+            </button>
+          </footer>
+        </article>
+      </section>
+
+      <!-- Final Results Screen -->
+      <section
+        id="results-screen"
+        class="results-view hidden"
+        aria-labelledby="results-heading"
+      >
+        <div class="panel results-panel">
+          <p class="metadata-line">
+            <span>Assessment Completed</span>
+            <span aria-hidden="true">/</span>
+            <span id="results-domain-meta">15 Questions Answered</span>
+          </p>
+
+          <h2 id="results-heading" class="results-title" tabindex="-1">
+            Quiz Results Summary
+          </h2>
+
+          <p id="performance-message" class="results-summary-copy">
+            Review your score breakdown, elapsed time, and question-by-question explanations below.
+          </p>
+
+          <!-- Primary Score Metrics -->
+          <div class="results-metrics-grid">
+            <div class="metric-cell">
+              <span class="metric-label">Total Score</span>
+              <strong id="final-score" class="metric-value tabular-nums">0 / 15</strong>
+            </div>
+            <div class="metric-cell">
+              <span class="metric-label">Accuracy</span>
+              <strong id="final-percentage" class="metric-value accent-value tabular-nums">
+                0%
+              </strong>
+            </div>
+            <div class="metric-cell">
+              <span class="metric-label">Elapsed Time</span>
+              <strong id="final-time" class="metric-value tabular-nums">00:00</strong>
+            </div>
+            <div class="metric-cell">
+              <span class="metric-label">Correct / Incorrect</span>
+              <strong class="metric-value tabular-nums">
+                <span id="final-correct" class="correct-value">0</span>
+                <span class="metric-slash">/</span>
+                <span id="final-incorrect" class="incorrect-value">0</span>
+              </strong>
+            </div>
+          </div>
+
+          <!-- Category Accuracy Breakdown -->
+          <div class="domain-summary-section">
+            <h3 class="section-heading">Score by Subject Area</h3>
+            <div id="category-breakdown" class="category-breakdown-grid">
+              <!-- Populated dynamically via js/script.js -->
+            </div>
+          </div>
+
+          <!-- Actions: Restart, Download JSON, Overview -->
+          <div class="results-actions-bar">
+            <div class="results-buttons">
+              <button type="button" id="restart-btn" class="btn btn-primary">
+                Restart Quiz
+              </button>
+              <button type="button" id="download-json-btn" class="btn btn-secondary">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.75"
+                  aria-hidden="true"
+                >
+                  <path d="M8 2v8m0 0L5 7m3 3l3-3M2.5 12.5v1h11v-1" />
+                </svg>
+                <span>Download Results (JSON)</span>
+              </button>
+              <button type="button" id="overview-btn" class="btn btn-secondary">
+                Return to Overview
+              </button>
+            </div>
+            <p class="export-helper-note">
+              The downloaded JSON file contains your score, accuracy percentage, elapsed time,
+              subject breakdown, and all 15 answered questions with explanations.
+            </p>
+          </div>
+        </div>
+
+        <!-- Detailed Question & Explanation Review -->
+        <div class="panel review-panel">
+          <div class="review-header">
+            <h3 class="section-heading">Question and Answer Log</h3>
+            <p class="review-subtext">
+              Complete record of your selected answers, verified answers, and explanations.
+            </p>
+          </div>
+          <div id="review-list" class="review-list">
+            <!-- Populated dynamically via js/script.js -->
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Site Footer with Legal & Navigation Links -->
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <p class="footer-copy">
+          FrontendMastery: Interactive HTML5, CSS3, JavaScript ES6+, DOM, and Accessibility Quiz.
+        </p>
+        <nav class="footer-nav" aria-label="Footer and legal navigation">
+          <a href="index.html" class="footer-link">Quiz Home</a>
+          <a href="privacy.html" class="footer-link">Privacy Policy</a>
+          <a href="terms.html" class="footer-link">Terms and Conditions</a>
+        </nav>
+      </div>
+    </footer>
+
+    <script type="module" src="js/script.js"></script>
+  </body>
+</html>

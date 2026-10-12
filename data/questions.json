@@ -1,0 +1,227 @@
+[
+  {
+    "id": 1,
+    "category": "HTML5",
+    "difficulty": "Foundational",
+    "question": "Which HTML5 element is the most semantically appropriate wrapper for the primary, unique content of a document, excluding repeated site headers, navigation bars, and footers?",
+    "options": [
+      "<section>",
+      "<main>",
+      "<article>",
+      "<div role=\"container\">"
+    ],
+    "correctIndex": 1,
+    "correctAnswer": "<main>",
+    "explanation": "The <main> element represents the dominant content of the <body> of a document. Assistive technologies use the main landmark so keyboard and screen reader users can skip repeated navigation blocks directly to primary content."
+  },
+  {
+    "id": 2,
+    "category": "HTML5",
+    "difficulty": "Intermediate",
+    "question": "When loading an external JavaScript file in the <head> with the `defer` attribute (`<script src=\"app.js\" defer></script>`), when is the script fetched and executed?",
+    "options": [
+      "Fetched after HTML parsing completes, then executed after the window load event",
+      "Fetched in parallel with HTML parsing and executed immediately, pausing the parser",
+      "Fetched in parallel with HTML parsing and executed in order after the HTML document is fully parsed, just before DOMContentLoaded",
+      "Fetched only when a user interacts with the page for the first time"
+    ],
+    "correctIndex": 2,
+    "correctAnswer": "Fetched in parallel with HTML parsing and executed in order after the HTML document is fully parsed, just before DOMContentLoaded",
+    "explanation": "Scripts marked with `defer` download in parallel without blocking HTML parsing and are guaranteed to execute in document order after the DOM tree is constructed, right before the `DOMContentLoaded` event fires."
+  },
+  {
+    "id": 3,
+    "category": "HTML5",
+    "difficulty": "Foundational",
+    "question": "What is the most reliable way to programmatically associate a `<label>` with a form `<input>` so that clicking the label focuses the input and screen readers announce it accurately?",
+    "options": [
+      "Match the label's `for` attribute to the input's unique `id` attribute",
+      "Match the label's `name` attribute to the input's `name` attribute",
+      "Place the `<label>` immediately after the `<input>` inside the same `<div>`",
+      "Set `aria-placeholder` on the `<input>` to the same text as the `<label>`"
+    ],
+    "correctIndex": 0,
+    "correctAnswer": "Match the label's `for` attribute to the input's unique `id` attribute",
+    "explanation": "Binding a `<label for=\"field-id\">` to an `<input id=\"field-id\">` creates an explicit programmatic association, expanding the hit area for touch and mouse users and providing an accessible name for assistive technologies."
+  },
+  {
+    "id": 4,
+    "category": "CSS3",
+    "difficulty": "Intermediate",
+    "question": "In CSS Grid, why does setting a column track to `minmax(0, 1fr)` instead of `1fr` prevent long unbroken strings or preformatted code blocks from overflowing their grid column?",
+    "options": [
+      "`1fr` defaults to `minmax(auto, 1fr)`, so the track refuses to shrink narrower than its minimum content size unless `0` is explicitly set",
+      "`minmax(0, 1fr)` automatically applies `overflow: hidden` and `text-overflow: ellipsis` to all child elements",
+      "`1fr` calculates width relative to the viewport (`100vw`) rather than the grid container width",
+      "`minmax(0, 1fr)` converts the grid item into an inline-block element that wraps text automatically"
+    ],
+    "correctIndex": 0,
+    "correctAnswer": "`1fr` defaults to `minmax(auto, 1fr)`, so the track refuses to shrink narrower than its minimum content size unless `0` is explicitly set",
+    "explanation": "By specification, a bare `1fr` track size expands to `minmax(auto, 1fr)`. Replacing `auto` with `0` (`minmax(0, 1fr)`) allows the grid track to shrink below the intrinsic minimum width of its children."
+  },
+  {
+    "id": 5,
+    "category": "CSS3",
+    "difficulty": "Intermediate",
+    "question": "In CSS Flexbox, what three longhand properties and values does the shorthand declaration `flex: 1;` expand to by default?",
+    "options": [
+      "`flex-grow: 1; flex-shrink: 0; flex-basis: 100%;`",
+      "`flex-grow: 1; flex-shrink: 1; flex-basis: 0%;`",
+      "`flex-grow: 1; flex-shrink: 1; flex-basis: auto;`",
+      "`flex-grow: 0; flex-shrink: 1; flex-basis: 1px;`"
+    ],
+    "correctIndex": 1,
+    "correctAnswer": "`flex-grow: 1; flex-shrink: 1; flex-basis: 0%;`",
+    "explanation": "When `flex` is given a single unitless number (`flex: 1`), CSS expands it to `flex-grow: 1`, `flex-shrink: 1`, and `flex-basis: 0%`, meaning sibling items share available space proportionally from a zero starting basis."
+  },
+  {
+    "id": 6,
+    "category": "CSS3",
+    "difficulty": "Advanced",
+    "question": "Which of the following CSS selectors has the highest specificity when targeting a button element inside a navigation bar?",
+    "options": [
+      "`nav ul li button.primary.active`",
+      "`#main-nav button`",
+      "`header nav.top-bar [type=\"button\"]:hover`",
+      "`body header nav ul li div span button`"
+    ],
+    "correctIndex": 1,
+    "correctAnswer": "`#main-nav button`",
+    "explanation": "An ID selector (`#main-nav`) contributes `(1, 0, 1)` to specificity, which outweighs any number of class selectors, attribute selectors, pseudo-classes (`0, 3, 2`), or element type selectors (`0, 0, 8`)."
+  },
+  {
+    "id": 7,
+    "category": "JavaScript",
+    "difficulty": "Intermediate",
+    "question": "What is logged to the console when the following ES6+ snippet runs?\n`console.log('A'); setTimeout(() => console.log('B'), 0); Promise.resolve().then(() => console.log('C')); console.log('D');`",
+    "options": [
+      "`A`, `B`, `C`, `D`",
+      "`A`, `D`, `B`, `C`",
+      "`A`, `D`, `C`, `B`",
+      "`A`, `C`, `D`, `B`"
+    ],
+    "correctIndex": 2,
+    "correctAnswer": "`A`, `D`, `C`, `B`",
+    "explanation": "Synchronous statements (`A` and `D`) run first on the call stack. Next, the event loop drains the microtask queue (`Promise.then` -> `C`) completely before picking up the next macrotask from the timer queue (`setTimeout` -> `B`)."
+  },
+  {
+    "id": 8,
+    "category": "JavaScript",
+    "difficulty": "Foundational",
+    "question": "Which array method returns a new array containing only the elements for which the provided callback function returns a truthy value, without mutating the original array?",
+    "options": [
+      "`Array.prototype.map()`",
+      "`Array.prototype.filter()`",
+      "`Array.prototype.splice()`",
+      "`Array.prototype.forEach()`"
+    ],
+    "correctIndex": 1,
+    "correctAnswer": "`Array.prototype.filter()`",
+    "explanation": "`filter()` creates a shallow copy of the portion of a given array whose elements pass the test implemented by the provided predicate function, leaving the source array unchanged."
+  },
+  {
+    "id": 9,
+    "category": "JavaScript",
+    "difficulty": "Intermediate",
+    "question": "How do ES6 arrow functions (`() => {}`) differ from standard function declarations regarding the binding of the `this` keyword?",
+    "options": [
+      "Arrow functions always bind `this` to the global `window` object regardless of strict mode",
+      "Arrow functions do not have their own `this` binding; they capture `this` lexically from their enclosing scope",
+      "Arrow functions bind `this` dynamically to whichever DOM element triggered the event",
+      "Arrow functions require `.bind(this)` to access variables declared in an outer function"
+    ],
+    "correctIndex": 1,
+    "correctAnswer": "Arrow functions do not have their own `this` binding; they capture `this` lexically from their enclosing scope",
+    "explanation": "Arrow functions inherit `this` from the surrounding lexical context where they are defined, making them ideal for callbacks inside class methods or timers where preserving outer context is desired."
+  },
+  {
+    "id": 10,
+    "category": "DOM Manipulation",
+    "difficulty": "Intermediate",
+    "question": "Why should you assign untrusted user input to `element.textContent` rather than `element.innerHTML` when updating the DOM?",
+    "options": [
+      "`textContent` automatically formats strings into valid semantic HTML paragraphs",
+      "`textContent` serializes characters as raw text rather than parsing HTML tags, preventing Cross-Site Scripting (XSS) injection",
+      "`innerHTML` cannot update elements that are already attached to the live document tree",
+      "`textContent` triggers CSS transitions automatically whereas `innerHTML` disables stylesheets"
+    ],
+    "correctIndex": 1,
+    "correctAnswer": "`textContent` serializes characters as raw text rather than parsing HTML tags, preventing Cross-Site Scripting (XSS) injection",
+    "explanation": "`element.textContent` treats the assigned value strictly as plain text and skips the HTML parser, neutralizing any embedded `<script>` or `onerror` payloads and executing faster than `innerHTML`."
+  },
+  {
+    "id": 11,
+    "category": "DOM Manipulation",
+    "difficulty": "Intermediate",
+    "question": "When using event delegation on a parent container (`quizOptions.addEventListener('click', handler)`), which DOM method cleanly finds the clicked `<button class=\"option-btn\">` even if the user clicked a nested `<span>` inside it?",
+    "options": [
+      "`event.target.closest('.option-btn')`",
+      "`event.currentTarget.querySelector('.option-btn')`",
+      "`event.target.parentElement.firstChild`",
+      "`event.stopPropagation('.option-btn')`"
+    ],
+    "correctIndex": 0,
+    "correctAnswer": "`event.target.closest('.option-btn')`",
+    "explanation": "`Element.closest(selector)` traverses the element and its ancestors upward toward the document root until it finds a node matching the selector, making delegated click handlers resilient to nested child markup."
+  },
+  {
+    "id": 12,
+    "category": "DOM Manipulation",
+    "difficulty": "Advanced",
+    "question": "When inserting dozens of newly created list items into the DOM at once, what is the primary advantage of appending them to a `DocumentFragment` first before appending the fragment to the live DOM?",
+    "options": [
+      "It batches the insertions into a single live DOM update, avoiding repeated layout thrashing and reflows",
+      "It runs the DOM creation logic inside a separate Web Worker thread automatically",
+      "It scopes CSS rules exclusively to the fragment items like a Shadow DOM root",
+      "It stores the elements in `localStorage` so they persist across page reloads"
+    ],
+    "correctIndex": 0,
+    "correctAnswer": "It batches the insertions into a single live DOM update, avoiding repeated layout thrashing and reflows",
+    "explanation": "A `DocumentFragment` is a lightweight off-screen DOM node. Building a subtree inside a fragment and appending it once triggers only a single browser style recalculation and layout pass."
+  },
+  {
+    "id": 13,
+    "category": "Web Accessibility",
+    "difficulty": "Foundational",
+    "question": "According to WCAG 2.1 Level AA guidelines, what is the minimum required contrast ratio between normal-sized body text (under 18pt / 24px) and its background color?",
+    "options": [
+      "2.5 : 1",
+      "3.0 : 1",
+      "4.5 : 1",
+      "7.0 : 1"
+    ],
+    "correctIndex": 2,
+    "correctAnswer": "4.5 : 1",
+    "explanation": "WCAG 2.1 Success Criterion 1.4.3 (Contrast Minimum, Level AA) requires a contrast ratio of at least 4.5:1 for normal text and 3:1 for large text (18pt+ or 14pt+ bold) to ensure readability for users with moderately low vision."
+  },
+  {
+    "id": 14,
+    "category": "Web Accessibility",
+    "difficulty": "Intermediate",
+    "question": "In an interactive quiz application, which ARIA attribute should be placed on the feedback container so screen readers automatically announce whether the selected answer was correct without interrupting the user's current speech mid-sentence?",
+    "options": [
+      "`aria-live=\"polite\"`",
+      "`aria-hidden=\"true\"`",
+      "`aria-Modal=\"true\"`",
+      "`role=\"presentation\"`"
+    ],
+    "correctIndex": 0,
+    "correctAnswer": "`aria-live=\"polite\"`",
+    "explanation": "An `aria-live=\"polite\"` region instructs assistive technologies to monitor the container for DOM text changes and announce the updated feedback at the next graceful pause, without stealing keyboard focus."
+  },
+  {
+    "id": 15,
+    "category": "Web Accessibility",
+    "difficulty": "Intermediate",
+    "question": "Why is the `:focus-visible` CSS pseudo-class preferred over simply removing `:focus { outline: none; }` on interactive buttons?",
+    "options": [
+      "`:focus-visible` shows a clear focus ring for keyboard navigation (`Tab` key) while suppressing distracting focus outlines on pointer/mouse clicks",
+      "`:focus-visible` automatically adds `tabindex=\"0\"` to non-interactive `<div>` and `<span>` elements",
+      "`:focus-visible` increases button font size by 20% when high-contrast mode is enabled",
+      "`:focus-visible` prevents disabled buttons from being inspected in browser developer tools"
+    ],
+    "correctIndex": 0,
+    "correctAnswer": "`:focus-visible` shows a clear focus ring for keyboard navigation (`Tab` key) while suppressing distracting focus outlines on pointer/mouse clicks",
+    "explanation": "Never remove `:focus` outlines without a replacement. `:focus-visible` lets authors style high-contrast focus indicators that appear whenever the browser determines keyboard or non-pointer focus navigation is active."
+  }
+]
