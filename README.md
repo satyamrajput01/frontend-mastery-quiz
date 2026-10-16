@@ -4,7 +4,7 @@ A responsive, accessible frontend development quiz built with HTML5, CSS3, and V
 
 🚀 Live Demo
 
-Try FrontendMastery Quiz here: https://satyamrajput01.github.io/frontend-mastery-quiz/
+Try FrontendMastery Quiz here: https://satyamrajput01.github.io/Frontend-mastery-quiz/
 
 
 ## Features
